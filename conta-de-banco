@@ -1,0 +1,51 @@
+let Banco = {
+    conta: '1203245678',
+    agencia: "Banco do Brasil - Agencia 2340",
+    saldo: 3000,
+    tipo: "Conta Corrente",
+    
+    buscarSaldo: function() {
+      return this.saldo;
+    },
+
+    buscarAgencia: function(){
+        return this.agencia
+    },
+
+    buscarTipo: function(){
+        return this.tipo
+    },
+    
+    deposito: function(valor) {
+      if (valor > 0) {
+        this.saldo += valor;
+        return `Depósito de R$ ${valor} realizado com sucesso. Novo saldo: R$ ${this.saldo}`;
+      } else {
+        return "Valor de depósito inválido";
+      }
+    },
+    
+    saque: function(valor) {
+      if (valor > 0 && valor <= this.saldo) {
+        this.saldo -= valor;
+        return `Saque de R$ ${valor} realizado com sucesso. Novo saldo: R$ ${this.saldo}`;
+      } else if (valor <= 0) {
+        return "Valor de saque inválido";
+      } else {
+        return "Saldo insuficiente para realizar o saque";
+      }
+    },
+    
+    numeroDaConta: function() {
+      return this.conta;
+    }
+  };
+  
+  console.log(Banco.buscarAgencia()); //Exibir agencia.
+  console.log("Conta: ", Banco.numeroDaConta()); // Exibir o numero da conta do usuario.
+  console.log("Tipo de conta: ", Banco.buscarTipo()); // Mostrar o tipo da conta.
+  console.log("Saldo atual: R$", Banco.buscarSaldo()); // Exibir o saldo atual.
+  console.log(Banco.deposito(300)); // Realizar um depósito de R$300.
+  console.log(Banco.saque(200)); // Realizar um saque de R$200.
+  
+  
